@@ -1,0 +1,22 @@
+*{
+  box-sizing: border-box;
+}
+body{
+  padding: 0;
+  margin: 0;
+}
+a{
+  text-decoration: none;
+}
+
+.null{
+  margin: 0;
+  padding: 0;
+}
+
+// wrappers
+.wrapper{
+  width: 95%;
+  margin: 0 auto;
+  max-width: $wrapperWidth;
+}
