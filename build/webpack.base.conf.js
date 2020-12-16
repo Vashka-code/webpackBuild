@@ -9,6 +9,9 @@ const PATHS = {
   assets: './assets/'
 }
 
+const fs = require('fs')
+const pages = fs.readdirSync(path.resolve(__dirname, '../src')).filter(fileName => fileName.endsWith('.html'));
+
 module.exports = {
   externals: {
     paths: PATHS
@@ -76,11 +79,10 @@ module.exports = {
     new MiniCssExtractPlugin({
       filename: `${PATHS.assets}/css/[name].css`,
     }),
-    new HtmlWebpackPlugin({
-      hash: true,
-      template: `${PATHS.src}/index.html`,
-      filename: 'index.html'
-    }),
+    ...pages.map(page => new HtmlWebpackPlugin({
+      template: `${PATHS.src}/${page}`,
+      filename: `./${page}`
+    })),
     new CopyWebpackPlugin({
       patterns: [
         { from: `${PATHS.src}/img`, to: `${PATHS.assets}img` },
