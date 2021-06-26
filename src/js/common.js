@@ -1,3 +1,3 @@
-let add = (a, b) => a + b;
+document.addEventListener('DOMContentLoaded', () => {
 
-console.log(add(2, 6))
+})
